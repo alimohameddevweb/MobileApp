@@ -1,1 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --font-display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --font-body: "Instrument Sans", "Segoe UI", sans-serif;
+
+  --color-ink: #1c2a23;
+  --color-pine-950: #071b13;
+  --color-pine-900: #0c281d;
+  --color-pine-800: #123527;
+  --color-pine-700: #1b4634;
+  --color-pine-200: #b9d6c4;
+  --color-paper: #f5f1e6;
+  --color-card: #fffdf5;
+  --color-butter: #ffc838;
+  --color-butter-deep: #a87f12;
+  --color-coral: #e4572e;
+  --color-lagoon: #2f7fa3;
+  --color-moss: #7fb069;
+  --color-tangerine: #d9822b;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--color-pine-950);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-butter);
+  color: var(--color-ink);
+}
+
+/* ---------- keyframes ---------- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes sheetUp {
+  from {
+    transform: translateY(102%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes floaty {
+  from {
+    transform: translateY(-6px) rotate(-3deg);
+  }
+  to {
+    transform: translateY(10px) rotate(4deg);
+  }
+}
+@keyframes ringPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 200, 56, 0.45);
+  }
+  75% {
+    box-shadow: 0 0 0 16px rgba(255, 200, 56, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 200, 56, 0);
+  }
+}
+@keyframes stampIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.25) rotate(-10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-3deg);
+  }
+}
+
+.anim-rise {
+  animation: rise 0.55s cubic-bezier(0.22, 0.9, 0.3, 1) both;
+}
+.anim-fade {
+  animation: fadeIn 0.25s ease both;
+}
+.anim-sheet {
+  animation: sheetUp 0.4s cubic-bezier(0.32, 0.9, 0.35, 1) both;
+}
+.anim-toast {
+  animation: toastIn 0.32s cubic-bezier(0.32, 0.9, 0.35, 1) both;
+}
+.anim-float {
+  animation: floaty 7s ease-in-out infinite alternate;
+}
+.anim-stamp {
+  animation: stampIn 0.45s cubic-bezier(0.22, 0.9, 0.3, 1) both;
+}
+.fab-pulse {
+  animation: ringPulse 2.8s ease-out infinite;
+}
+
+/* ---------- textures ---------- */
+.noise {
+  position: relative;
+}
+.noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.halftone {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1.4px);
+  background-size: 15px 15px;
+}
+
+.halftone-dark {
+  background-image: radial-gradient(rgba(28, 42, 35, 0.08) 1px, transparent 1.4px);
+  background-size: 14px 14px;
+}
+
+/* ---------- scrollbar ---------- */
+.phone-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+}
+.phone-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.phone-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 99px;
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
